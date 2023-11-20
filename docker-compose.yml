@@ -1,19 +1,14 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:latest
+  minio:
+    image: minio/minio:latest
     ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: 1234567890
+      - "9001:9001"
+      - "9000:9000"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    ports:
-      - "80:80"
-    depends_on:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: 1234567890
+volumes:
+  minio_data:
