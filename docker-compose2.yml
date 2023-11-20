@@ -6,8 +6,8 @@ services:
     ports:
       - "9000:9000"
     environment:
-      MINIO_ROOT_USER: *ваш_пользователь*
-      MINIO_ROOT_PASSWORD: *ваш_пароль*
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: 1234
     volumes:
       - minio_data:/data
     command: server /data
